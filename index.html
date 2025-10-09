@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AQI Checker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    .aqi-results {
+      margin-top: 30px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    
+    .location-header {
+      margin-bottom: 20px;
+    }
+    
+    .location-header h2 {
+      margin-bottom: 5px;
+    }
+    
+    .small {
+      font-size: 0.9em;
+      color: #666;
+    }
+    
+    .aqi-card {
+      display: flex;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .aqi-number {
+      padding: 20px;
+      text-align: center;
+      color: white;
+      width: 100px;
+    }
+    
+    .aqi-info {
+      padding: 20px;
+      flex: 1;
+    }
+    
+    .good {
+      background-color: #a8e05f;
+    }
+    
+    .moderate {
+      background-color: #fdd74b;
+    }
+    
+    .sensitive {
+      background-color: #ff9b57;
+    }
+    
+    .unhealthy {
+      background-color: #fe6a69;
+    }
+    
+    .very-unhealthy {
+      background-color: #a97abc;
+    }
+    
+    .hazardous {
+      background-color: #a87383;
+    }
+    
+    .good .aqi-number {
+      background-color: #8cc152;
+    }
+    
+    .moderate .aqi-number {
+      background-color: #f6bb42;
+    }
+    
+    .sensitive .aqi-number {
+      background-color: #e9573f;
+    }
+    
+    .unhealthy .aqi-number {
+      background-color: #da4453;
+    }
+    
+    .very-unhealthy .aqi-number {
+      background-color: #967adc;
+    }
+    
+    .hazardous .aqi-number {
+      background-color: #8c6e7a;
+    }
+    
+    .aqi-number .value {
+      font-size: 32px;
+      font-weight: bold;
+      display: block;
+    }
+    
+    .aqi-info h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    
+    .details-section h3 {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+    
+    .timestamp {
+      font-style: italic;
+      color: #666;
+    }
+    
+    .note {
+      background-color: #e8f7ff;
+      border-left: 5px solid #4aa3df;
+      padding: 10px 15px;
+      margin-top: 20px;
+    }
+    
+    .error {
+      background-color: #ffe8e8;
+      border-left: 5px solid #df4a4a;
+      padding: 10px 15px;
+      margin-top: 20px;
+    }
+    
+    /* Add navigation links styles */
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      color: #555;
+      margin: 0 10px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      background-color: rgba(76, 175, 80, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Air Quality Index Checker</h1>
+  
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="neighborhood-insights.html" class="nav-link">Neighborhood Insights</a>
+  </div>
+  
+  <form id="location-form" onsubmit="handleSubmit(event)">
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input type="text" id="city" placeholder="Enter city name" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="state">State/Province:</label>
+      <input type="text" id="state" placeholder="Enter state or province" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="country">Country:</label>
+      <input type="text" id="country" placeholder="Enter country" required>
+    </div>
+    
+    <button type="submit">Check Air Quality</button>
+  </form>
+  
+  <div id="result"></div>
+  
+  <!-- Make sure to use the correct JavaScript file name -->
+  <script src="location-to-aqi-js.js"></script>
+</body>
+</html>
